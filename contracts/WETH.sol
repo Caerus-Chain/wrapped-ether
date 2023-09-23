@@ -10,7 +10,7 @@ contract WETH is ERC20, IWETH {
 
     // Fallback function to revert all incoming Ether
     receive() external payable {
-        revert("Use the deposit function");
+        revert("WETH::receive: Use the deposit function");
     }
 
     // Actual fallback function to handle the incoming Ether
@@ -26,14 +26,14 @@ contract WETH is ERC20, IWETH {
     function withdraw(uint256 _amount) external {
         require(
             balanceOf(msg.sender) >= _amount,
-            "Sender balance must be greater than or equal to _amount."
+            "WETH::withdraw: Sender balance must be greater than or equal to _amount."
         );
 
         _burn(msg.sender, _amount);
 
         // Use call instead of transfer
         (bool success, ) = payable(msg.sender).call{value: _amount}("");
-        require(success, "Withdrawal failed");
+        require(success, "WETH::withdraw: Withdrawal failed");
 
         emit Withdraw(msg.sender, _amount);
     }
