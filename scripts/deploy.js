@@ -21,3 +21,5 @@ main()
     console.error(error);
     process.exit(1);
   });
+// Deploying contracts with the account: 0xa40aa030A3ba4f42FDCd2B7bC33d5B03770290ea
+// WETH contract deployed to: 0x5418ed830A6756031F6CF96fA302D5a95D1dBbcb
